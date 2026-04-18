@@ -86,6 +86,7 @@
             font-weight: bold;
             color: #343a40;
         }
+        
         .table-primary {
             transition: background-color 0.2s ease;
         }
@@ -137,13 +138,18 @@
             font-family: monospace;
             font-weight: 500;
         }
+        #controller-table tbody {
+            background-color: #ffffff;
+            border-color:#c1c1c1;
+            
+        }
     </style>
 </head>
 <body>
     <div class="container-fluid">
         <div class="row page-header">
             <div class="col-12">
-                <h3 class="text-center"><b>AnglerBot Control</b></h3>
+                <h3 class="text-center"><b>~AnglerBot Control~</b></h3>
             </div>
         </div>
         
@@ -151,111 +157,49 @@
             <!-- Left column with video feed and diagnostics -->
             <div class="col-lg-8 pe-lg-2">
                 <div class="row slim-row">
-                    
-                    <!-- Camera Node Feeds -->
+                    <!-- Camera Feeds -->
                     <div class="col-md-12">
-                        <div class="card mb-2">
+                        <div class="card camera-card mb-2">
                             <div class="card-header d-flex justify-content-between align-items-center p-2">
-                                <h6 class="mb-0">Camera Node Feeds</h6>
+                                <h6 class="mb-0"><b>Camera</b></h6>
                             </div>
                             <div class="card-body p-2">
                                 <div class="row">
                                     <!-- USB Camera Feed -->
                                     <div class="col-md-4">
                                         <div class="video-container">
-                                            <img src="novideo.png" id="camera_node_video" class="video-thumbnail"></img>
-                                            <div class="camera-caption">Camera Node - USB</div>
+                                            <img src="nocamera.png" id="camera_view" class="video-thumbnail"></img>
+                                            <div class="camera-caption">Camera View</div>
                                         </div>
                                     </div>
-                                    
-                                    <!-- RealSense 1 Color Feed -->
-                                    <div class="col-md-4">
-                                        <div class="video-container">
-                                            <img src="novideo.png" id="camera_node_rs1_color" class="video-thumbnail"></img>
-                                            <div class="camera-caption">Camera Node - RS1 RGB</div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- RealSense 1 Depth Feed -->
-                                    <div class="col-md-4">
-                                        <div class="video-container">
-                                            <img src="novideo.png" id="camera_node_rs1_depth" class="video-thumbnail"></img>
-                                            <div class="camera-caption">Camera Node - RS1 Depth</div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- RealSense 2 Color Feed -->
-                                    <div class="col-md-4">
-                                        <div class="video-container">
-                                            <img src="novideo.png" id="camera_node_rs2_color" class="video-thumbnail"></img>
-                                            <div class="camera-caption">Camera Node - RS2 RGB</div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- RealSense 2 Depth Feed -->
-                                    <div class="col-md-4">
-                                        <div class="video-container">
-                                            <img src="novideo.png" id="camera_node_rs2_depth" class="video-thumbnail"></img>
-                                            <div class="camera-caption">Camera Node - RS2 Depth</div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="col-md-4">
-                        <!-- Status and diagnostics -->
-                        <div class="card mb-2">
-                            <div class="card-header d-flex justify-content-between align-items-center p-2">
-                                <h6 class="mb-0">Status</h6>
-                                <div>
-                                    <span class="status-indicator disconnected" id="ros-status"></span>
-                                    <small id="ros-status-text">Disconnected</small>
-                                    |
-                                    <span class="status-indicator disconnected" id="controller-status"></span>
-                                    <small id="controller-status-text">No Controller</small>
-                                </div>
-                            </div>
-                        </div>
+                    
                         
-                        <div class="card controller-card mb-2">
+                        <!-- <div class="card controller-card mb-2">
                             <div class="card-body p-2">
                                 <h6 class="card-title">Controller Diagnostics</h6>
                                 <div class="diagnostic-panel" id="controller_diag">Waiting for data...</div>
                             </div>
-                        </div>
+                        </div> -->
                         
-                        <div class="card controller-card mb-2">
-                            <div class="card-body p-2">
-                                <h6 class="card-title">I2C Diagnostics</h6>
-                                <div class="diagnostic-panel" id="i2c_diag">Waiting for data...</div>
-                            </div>
-                        </div>
                         
-                        <div class="card controller-card mb-2">
+                        <!-- <div class="card controller-card mb-2">
                             <div class="card-body p-2">
                                 <h6 class="card-title">Camera Node Diagnostics</h6>
                                 <div class="diagnostic-panel" id="camera_node_diag">Waiting for data...</div>
                             </div>
-                        </div>
-                        
-                        <div class="card controller-card mb-2">
-                            <div class="card-body p-2">
-                                <h6 class="card-title">Camera Latency Information</h6>
-                                <div class="diagnostic-panel" id="camera_latency_panel">
-                                    <div class="text-center text-muted py-2">
-                                        <small>Waiting for latency data...</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 
-                <div class="row slim-row">
+                <!-- <div class="row slim-row">
                     <div class="col-12">
-                        <!-- I2C Command History Panel -->
+                    
                         <div class="card mb-2">
                             <div class="card-header p-2 d-flex justify-content-between align-items-center">
                                 <h6 class="mb-0">I2C Command History</h6>
@@ -269,9 +213,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 
-                <!-- System Parameters -->
+                <!-- System Parameters
                 <div class="card mb-2">
                     <div class="card-header p-2">
                         <h6 class="mb-0">System Parameters</h6>
@@ -279,40 +223,42 @@
                     <div class="card-body p-2">
                         <div id="params-display" class="small" style="max-height: 100px; overflow-y: auto;">Loading parameters...</div>
                     </div>
-                </div>
+                </div> -->
             </div>
             
             <!-- Right column with controller mapping -->
             <div class="col-lg-4 ps-lg-2">
                 <div class="controller-map">
-                    <h5 class="text-center mb-2"><b>Controller Mapping</b></h5>
-                    <table class="table table-sm table-hover compact-table mb-0">
+                    <h5 class="text-center mb-2"><b>Controller Mapping</b><br><span style="color: green; font-size: 16px;">Green: Driving-Related</span> | <span style="color: orange;font-size: 16px;">Orange: Arm-Related</span> | <span style="color:#007bff; font-size: 16px;">Blue: Other Robot Features</span></h5>
+                    <table id="controller-table" class="table table-sm table-hover compact-table mb-0">
                         <thead class="table-light">
                             <tr>
-                                <th width="30%">Button</th>
-                                <th width="50%">Function</th>
+                                <th width="25%">Button</th>
+                                <th width="55%">Function</th>
                                 <th width="20%">Value</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr id="mapping-button-lb" class="controller-mapping-row"><td><b>LB</b></td><td>Belt</td><td class="controller-value" data-control="button-lb">-</td></tr>
-                            <tr id="mapping-button-ls" class="controller-mapping-row"><td><b>L3</b></td><td>Unused</td><td class="controller-value" data-control="button-ls">-</td></tr>
-                            <tr id="mapping-button-rb" class="controller-mapping-row"><td><b>RB</b></td><td>Unused</td><td class="controller-value" data-control="button-rb">-</td></tr>
-                            <tr id="mapping-button-rs" class="controller-mapping-row"><td><b>R3</b></td><td>Unused</td><td class="controller-value" data-control="button-rs">-</td></tr>
-                            <tr id="mapping-button-back" class="controller-mapping-row"><td><b>Select</b></td><td>Unused</td><td class="controller-value" data-control="button-back">-</td></tr>
-                            <tr id="mapping-button-start" class="controller-mapping-row"><td><b>Start</b></td><td>Unused</td><td class="controller-value" data-control="button-start">-</td></tr>
-                            <tr id="mapping-dpad-up" class="controller-mapping-row"><td><b>D-Pad Up</b></td><td>Raise belt</td><td class="controller-value" data-control="dpad-up">-</td></tr>
-                            <tr id="mapping-dpad-down" class="controller-mapping-row"><td><b>D-Pad Down</b></td><td>Lower belt</td><td class="controller-value" data-control="dpad-down">-</td></tr>
-                            <tr id="mapping-dpad-left" class="controller-mapping-row"><td><b>D-Pad Left</b></td><td>Unused</td><td class="controller-value" data-control="dpad-left">-</td></tr>
-                            <tr id="mapping-dpad-right" class="controller-mapping-row"><td><b>D-Pad Right</b></td><td>Unused</td><td class="controller-value" data-control="dpad-right">-</td></tr>
-                            <tr id="mapping-button-y" class="controller-mapping-row"><td><b>Y</b></td><td>Unused</td><td class="controller-value" data-control="button-y">-</td></tr>
-                            <tr id="mapping-button-x" class="controller-mapping-row"><td><b>X</b></td><td>Deposit</td><td class="controller-value" data-control="button-x">-</td></tr>
-                            <tr id="mapping-button-a" class="controller-mapping-row"><td><b>A</b></td><td>Vibrate</td><td class="controller-value" data-control="button-a">-</td></tr>
-                            <tr id="mapping-button-b" class="controller-mapping-row"><td><b>B</b></td><td>Reverse Belt</td><td class="controller-value" data-control="button-b">-</td></tr>
-                            <tr id="mapping-left-stick-x" class="controller-mapping-row"><td><b>LS (X)</b></td><td>Point wheels (left/right)</td><td class="controller-value" data-control="left-stick-x">-</td></tr>
-                            <tr id="mapping-left-stick-y" class="controller-mapping-row"><td><b>LS (Y)</b></td><td>Point wheels (front/back)</td><td class="controller-value" data-control="left-stick-y">-</td></tr>
-                            <tr id="mapping-right-stick-x" class="controller-mapping-row"><td><b>RS (X)</b></td><td>Rotate Robot</td><td class="controller-value" data-control="right-stick-x">-</td></tr>
-                            <tr id="mapping-right-stick-y" class="controller-mapping-row"><td><b>RS (Y)</b></td><td>Unused</td><td class="controller-value" data-control="right-stick-y">-</td></tr>
+                            <tr id="mapping-button-lb" class="controller-mapping-row"><td><b>LB</b></td><td>(Toggle) Enter <span style="color: orange;" title="When in Grab Mode, the arm becomes controllable and overrides some commands.">Grab Mode</span></td><td class="controller-value" data-control="button-lb">-</td></tr>
+                            <tr id="mapping-button-lt" class="controller-mapping-row"><td><b>LT</b></td><td>(Hold) Enter <span style="color: orange;" title="When in Grab Mode, the arm becomes controllable and overrides some commands.">Grab Mode</span></td><td class="controller-value" data-control="button-lb">-</td></tr>
+                            <!-- <tr id="mapping-button-ls" class="controller-mapping-row"><td><b>L3</b></td><td>Unused</td><td class="controller-value" data-control="button-ls">-</td></tr> -->
+                            <tr id="mapping-button-rb" class="controller-mapping-row"><td><b>RB</b></td><td>Toggle <span style="color: orange;" title="Grab Lock locks the position of the grasper, allowing you to exit Grab Mode while still holding an object and drive elsewhere.">Grab Lock</span></td><td class="controller-value" data-control="button-rb">-</td></tr>
+                            <!-- <tr id="mapping-button-rs" class="controller-mapping-row"><td><b>R3</b></td><td>Unused</td><td class="controller-value" data-control="button-rs">-</td></tr> -->
+                            <tr id="mapping-button-rs" class="controller-mapping-row"><td><b>RT</b></td><td><span style="color: orange;" title="When grabbing, the input is analog, so you can adjust strength in real time.">Grab</span></td><td class="controller-value" data-control="button-rs">-</td></tr>
+                            <!-- <tr id="mapping-button-back" class="controller-mapping-row"><td><b>Select</b></td><td>Unused</td><td class="controller-value" data-control="button-back">-</td></tr> -->
+                            <!-- <tr id="mapping-button-start" class="controller-mapping-row"><td><b>Start</b></td><td>Unused</td><td class="controller-value" data-control="button-start">-</td></tr> -->
+                            <tr id="mapping-dpad-up" class="controller-mapping-row"><td><b>D-Pad Up</b></td><td>Lower <span style="color: orange;" title="The joints start with the base, and move up the arm in order, with Joint 1 being closest to the base, and Joint 4 being closest to the grasper.">Joint 1</span></td><td class="controller-value" data-control="dpad-up">-</td></tr>
+                            <tr id="mapping-dpad-down" class="controller-mapping-row"><td><b>D-Pad Down</b></td><td>Raise <span style="color: orange;" title="The joints start with the Arm Base, and move up the arm in order, with Joint 1 being closest to the base, and Joint 4 being closest to the grasper.">Joint 1</span></td><td class="controller-value" data-control="dpad-down">-</td></tr>
+                            <tr id="mapping-dpad-left" class="controller-mapping-row"><td><b>D-Pad Left</b></td><td>Rotate <span style="color: orange;" title="The joints start with the Arm Base, and move up the arm in order, with Joint 1 being closest to the base, and Joint 4 being closest to the grasper.">Arm Base</span> CCW (Left)</td><td class="controller-value" data-control="dpad-left">-</td></tr>
+                            <tr id="mapping-dpad-right" class="controller-mapping-row"><td><b>D-Pad Right</b></td><td>Rotate <span style="color: orange;" title="The joints start with the Arm Base, and move up the arm in order, with Joint 1 being closest to the base, and Joint 4 being closest to the grasper.">Arm Base</span> CW (Right)</td><td class="controller-value" data-control="dpad-right">-</td></tr>
+                            <tr id="mapping-button-y" class="controller-mapping-row"><td><b>Y</b></td><td>Raise <span style="color: orange;" title="The joints start with the Arm Base, and move up the arm in order, with Joint 1 being closest to the base, and Joint 4 being closest to the grasper.">Joint 4</span> / Toggle <span style="color:#007bff;" title="The metal detector should...">Metal Detector</span></td><td class="controller-value" data-control="button-y">-</td></tr>
+                            <tr id="mapping-button-x" class="controller-mapping-row"><td><b>X</b></td><td>Toggle <span style="color:#007bff" title="In autonomy mode, the robot will attempt to pathfind through a black tape maze. Start with the robot facing in the direction of the maze.">Autonomy Mode</span> (alongside B)</td><td class="controller-value" data-control="button-x">-</td></tr>
+                            <tr id="mapping-button-a" class="controller-mapping-row"><td><b>A</b></td><td>Lower <span style="color: orange;" title="The joints start with the Arm Base, and move up the arm in order, with Joint 1 being closest to the base, and Joint 4 being closest to the grasper.">Joint 4</span></td><td class="controller-value" data-control="button-a">-</td></tr>
+                            <tr id="mapping-button-b" class="controller-mapping-row"><td><b>B</b></td><td>Toggle <span style="color:#007bff;" title="In autonomy mode, the robot will attempt to pathfind through a black tape maze. Start with the robot facing in the direction of the maze.">Autonomy Mode</span> (alongside X)</td><td class="controller-value" data-control="button-b">-</td></tr>
+                            <!-- <tr id="mapping-left-stick-x" class="controller-mapping-row"><td><b>LS (X)</b></td><td>Unused</td><td class="controller-value" data-control="left-stick-x">-</td></tr> -->
+                            <tr id="mapping-left-stick-y" class="controller-mapping-row"><td><b>LS (Y)</b></td><td>Control <span style="color: orange;" title="The joints start with the Arm Base, and move up the arm in order, with Joint 1 being closest to the base, and Joint 4 being closest to the grasper.">Joint 2</span> / <span style="color: green;">Drive</span></td><td class="controller-value" data-control="left-stick-y">-</td></tr>
+                            <tr id="mapping-right-stick-x" class="controller-mapping-row"><td><b>RS (X)</b></td><td><span style="color: green;">Steer</span></td><td class="controller-value" data-control="right-stick-x">-</td></tr>
+                            <tr id="mapping-right-stick-y" class="controller-mapping-row"><td><b>RS (Y)</b></td><td>Control <span style="color: orange;" title="The joints start with the Arm Base, and move up the arm in order, with Joint 1 being closest to the base, and Joint 4 being closest to the grasper.">Joint 3</span></td><td class="controller-value" data-control="right-stick-y">-</td></tr>
                         </tbody>
                     </table>
                 </div>
