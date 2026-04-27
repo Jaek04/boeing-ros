@@ -31,6 +31,15 @@
         .disconnected {
             background-color: #dc3545;
         }
+        .grabmode {
+            background-color: orange;
+        }
+        .idle {
+            background-color: yellow
+        }
+        .navigating {
+            background-color: #007bff;
+        }
         .diagnostic-panel {
             height: 140px;
             overflow-y: auto;
@@ -64,7 +73,7 @@
             flex: 0 0 auto;
         }
         .controller-map {
-            background-color: #ffffff;
+            background-color: rgb(236, 236, 236);
             border-radius: 8px;
             padding: 12px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -181,16 +190,56 @@
                         <!-- Status and diagnostics -->
                         <div class="card mb-2">
                             <div class="card-header d-flex justify-content-between align-items-center p-2">
-                                <h6 class="mb-0">Status</h6>
+                                <h6 class="mb-0">Overall Status</h6>
                                 <div>
                                     <span class="status-indicator disconnected" id="ros-status"></span>
                                     <small id="ros-status-text">Disconnected</small>
-                                    |
-                                    <span class="status-indicator disconnected" id="controller-status"></span>
-                                    <small id="controller-status-text">No Controller</small>
                                 </div>
                             </div>
                         </div>
+                        <div class="card mb-2">
+                            <div class="card-header d-flex justify-content-between align-items-center p-2">
+                                <h6 class="mb-0">Controller Status</h6>
+                                <div>
+                                    <span class="status-indicator disconnected" id="controller-status"></span>
+                                    <small id="controller-status-text">Disconnected</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+
+
+                        <div class="card mb-2">
+                            <div class="card-header d-flex justify-content-between align-items-center p-2">
+                                <h6 class="mb-0">Metal Detection Status</h6>
+                                <div>
+                                    <span class="status-indicator disconnected" id="metal-detection-status"></span>
+                                    <small id="metal-detector-status-text">Disconnected</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-2">
+                            <div class="card-header d-flex justify-content-between align-items-center p-2">
+                                <h6 class="mb-0">Autonomy Status</h6>
+                                <div>
+                                    <span class="status-indicator disconnected" id="autonomy-status"></span>
+                                    <small id="autonomy-status-text">Disconnected</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-2">
+                            <div class="card-header d-flex justify-content-between align-items-center p-2">
+                                <h6 class="mb-0">Arm Status</h6>
+                                <div>
+                                    <span class="status-indicator disconnected" id="arm-status"></span>
+                                    <small id="arm-status-text">Disconnected</small>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                         
                         <!-- <div class="card controller-card mb-2">

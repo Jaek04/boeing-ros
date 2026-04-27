@@ -35,6 +35,7 @@ ros.on("connection", function () {
   document.getElementById("ros-status").classList.add("connected");
   document.getElementById("ros-status-text").textContent = "Connected";
 
+
   setInterval(() => connectionTopic.publish(connectionStatus), 250);
 });
 
@@ -75,26 +76,6 @@ var cameraNodeImageTopic = new ROSLIB.Topic({
   name: "/camera_node/usb_camera_image", // Changed to match the new topic name in launch file
   messageType: "std_msgs/String",
 });
-var cameraNodeRS1ColorTopic = new ROSLIB.Topic({
-  ros: ros,
-  name: "/camera_node/rs1_color_image",
-  messageType: "std_msgs/String",
-});
-var cameraNodeRS1DepthTopic = new ROSLIB.Topic({
-  ros: ros,
-  name: "/camera_node/rs1_depth_image",
-  messageType: "std_msgs/String",
-});
-var cameraNodeRS2ColorTopic = new ROSLIB.Topic({
-  ros: ros,
-  name: "/camera_node/rs2_color_image",
-  messageType: "std_msgs/String",
-});
-var cameraNodeRS2DepthTopic = new ROSLIB.Topic({
-  ros: ros,
-  name: "/camera_node/rs2_depth_image",
-  messageType: "std_msgs/String",
-});
 
 // Diagnostic topics
 var controllerDiagTopic = new ROSLIB.Topic({
@@ -124,34 +105,6 @@ var controllerI2CHistoryTopic = new ROSLIB.Topic({
 cameraNodeImageTopic.subscribe(function (message) {
   updateImageWithMimeType(
     document.getElementById("camera_node_video"),
-    message.data
-  );
-});
-
-cameraNodeRS1ColorTopic.subscribe(function (message) {
-  updateImageWithMimeType(
-    document.getElementById("camera_node_rs1_color"),
-    message.data
-  );
-});
-
-cameraNodeRS1DepthTopic.subscribe(function (message) {
-  updateImageWithMimeType(
-    document.getElementById("camera_node_rs1_depth"),
-    message.data
-  );
-});
-
-cameraNodeRS2ColorTopic.subscribe(function (message) {
-  updateImageWithMimeType(
-    document.getElementById("camera_node_rs2_color"),
-    message.data
-  );
-});
-
-cameraNodeRS2DepthTopic.subscribe(function (message) {
-  updateImageWithMimeType(
-    document.getElementById("camera_node_rs2_depth"),
     message.data
   );
 });
@@ -595,3 +548,21 @@ function readControllerData() {
 
   buttonTopic.publish(buttonData);
 }
+
+// UI updates that need to be added in
+
+// // Update UI to show connected
+// document.getElementById("metal-detection-status").classList.remove("disconnected");
+// document.getElementById("metal-detection-status").classList.add("connected");
+// document.getElementById("metal-detection-status-text").textContent = "Connected";
+
+// // Update UI to show connected
+// document.getElementById("autonomy-status").classList.remove("disconnected");
+// document.getElementById("autonomy-status").classList.add("connected");
+// document.getElementById("autonomy-status-text").textContent = "Connected";
+
+// // Update UI to show connected
+// document.getElementById("arm-status").classList.remove("disconnected");
+// document.getElementById("arm-status").classList.add("connected");
+// document.getElementById("arm-status-text").textContent = "Connected";
+
